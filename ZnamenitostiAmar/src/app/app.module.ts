@@ -9,7 +9,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ZnamenitostPreviewComponent } from './components/znamenitost-preview/znamenitost-preview.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ZnamenitostPreviewComponent } from './components/znamenitost-preview/zn
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     // NgbModule.forRoot()
   ],
   providers: [],

@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ZnamenitostPreviewComponent implements OnInit {
 
+  currentRate:number = 3;
+  startingImg:string = 'https://sanapress.info/wp-content/uploads/2021/01/sinan-begova-dzamija.jpeg';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  nextImg(){
+    console.log("go right");
+  }
+
+  prevImg(){
+    console.log("go left");
   }
 
 }

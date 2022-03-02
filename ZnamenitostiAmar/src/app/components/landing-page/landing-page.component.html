@@ -4,7 +4,7 @@
         <div class="text-center text-white d-flex flex-column align-items-center">
             <h1 class="display-4 fw-bolder">ZnamenitostiAmar</h1>
             <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-            <form class="d-flex mt-4 w-50">
+            <form class="d-flex mt-4">
                 <input class="form-control me-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
             </form>
@@ -13,9 +13,17 @@
   </header>
   <!-- Section-->
   <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div *ngFor="let i of [1,2,3,4,5,6,7]" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
+    <div class="container px-4 px-lg-5 mt-4">
+        <div class="btn-group mb-5" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">
+            <label class="btn btn-outline-primary" for="btnradio1">Znamenito</label>
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked="">
+            <label class="btn btn-outline-primary" for="btnradio2">Veoma znamenito</label>
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked="">
+            <label class="btn btn-outline-primary" for="btnradio3">Nezaobilazno</label>
+        </div>
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+            <div *ngFor="let i of [1,2,3,4,5,6,7,8]" class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
                     <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
@@ -25,12 +33,16 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">Fancy Product</h5>
                             <!-- Product price-->
-                            $40.00 - $80.00
+                            Lat & Lon: 43.138089,20.516570
+                            <div style="font-size:x-large; color:orange;">
+                                <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
+                                27 reviews
+                            </div>
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">View options</a></div>
                     </div>
                 </div>
             </div>

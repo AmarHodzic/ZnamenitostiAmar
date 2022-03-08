@@ -26,6 +26,7 @@ public class Znamenitost {
     private String coordination;
     private Boolean active;
     private Integer rating;
+    private Integer level;
     private LocalDate createdOn;
     private LocalDate updatedOn;
 
@@ -33,7 +34,7 @@ public class Znamenitost {
     public Znamenitost() {
     }
 
-    public Znamenitost(Long id, String title, String desc, String images, String coordination, Boolean active, Integer rating, LocalDate createdOn, LocalDate updatedOn) {
+    public Znamenitost(Long id, String title, String desc, String images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn) {
         this.id = id;
         this.title = title;
         this.description = desc;
@@ -41,17 +42,19 @@ public class Znamenitost {
         this.coordination = coordination;
         this.active = active;
         this.rating = rating;
+        this.level = level;
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
     }
 
-    public Znamenitost(String title, String desc, String images, String coordination, Boolean active, Integer rating, LocalDate createdOn, LocalDate updatedOn) {
+    public Znamenitost(String title, String desc, String images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn) {
         this.title = title;
         this.description = desc;
         this.images = images;
         this.coordination = coordination;
         this.active = active;
         this.rating = rating;
+        this.level = level;
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
     }
@@ -112,6 +115,14 @@ public class Znamenitost {
         this.rating = rating;
     }
 
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
     public LocalDate getCreatedOn() {
         return createdOn;
     }
@@ -138,6 +149,7 @@ public class Znamenitost {
                 ", coordination='" + coordination + '\'' +
                 ", active=" + active +
                 ", rating=" + rating +
+                ", level=" + level +
                 ", createdOn=" + createdOn +
                 ", updatedOn=" + updatedOn +
                 '}';

@@ -28,10 +28,6 @@ public class Drzava {
     @JoinColumn(name = "id_drzave")
     private List<Grad> gradovi;
 
-//    @JoinColumn(name = "id_znamenitosti")
-//    private List<Znamenitost> listaZnamenitosti;
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-
     public Drzava() {
     }
 
@@ -39,13 +35,11 @@ public class Drzava {
         this.id = id;
         this.name = name;
         this.gradovi = new ArrayList<Grad>();
-//        this.listaZnamenitosti = new ArrayList<Znamenitost>();
     }
 
     public Drzava(String name) {
         this.name = name;
         this.gradovi = new ArrayList<Grad>();
-//        this.listaZnamenitosti = new ArrayList<Znamenitost>();
     }
 
     public Long getId() {
@@ -71,14 +65,7 @@ public class Drzava {
     public void setGradovi(List<Grad> gradovi) {
         this.gradovi = gradovi;
     }
-//
-//    public List<Znamenitost> getListaZnamenitosti() {
-//        return listaZnamenitosti;
-//    }
 
-//    public void setListaZnamenitosti(List<Znamenitost> listaZnamenitosti) {
-//        this.listaZnamenitosti = listaZnamenitosti;
-//    }
 
     @Override
     public String toString() {

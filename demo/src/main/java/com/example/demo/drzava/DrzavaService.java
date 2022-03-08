@@ -18,4 +18,8 @@ public class DrzavaService {
     public List<Drzava> getDrzave(){
         return drzavaRepository.findAll();
     }
+
+    public void addDrzava(Drzava drzava) {
+        drzavaRepository.save(drzava);
+    }
 }

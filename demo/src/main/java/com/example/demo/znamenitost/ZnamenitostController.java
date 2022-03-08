@@ -21,13 +21,24 @@ public class ZnamenitostController {
         this.gradService = gradService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public List<Znamenitost> getZnamenitosti() {
         return znamenitostService.getZnamenitosti();
     }
 
+//    @GetMapping(path = "{znamenitostLvel}")
+//    public List<Znamenitost> getZnamenitostiByLvel(@PathVariable Integer level) {
+//        return znamenitostService.getZnamenitostiByLevel(level);
+//    }
+
     @PostMapping(path = "/",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public Znamenitost addZnamenitost(@RequestBody ZnamenitostData znamenitostData){
         return  gradService.addZnamenitost(znamenitostData);
+    }
+
+    @DeleteMapping(path = "{znamenitostId}")
+    public void deleteZnamenitost(@PathVariable("znamenitostId") Long znamenitostId){
+        znamenitostService.deleteZnamenitost(znamenitostId);
     }
 }

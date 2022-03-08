@@ -23,16 +23,33 @@
             <label class="btn btn-outline-primary" for="btnradio3">Nezaobilazno</label>
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
-            <div *ngFor="let i of [1,2,3,4,5,6,7,8]" class="col mb-5">
+            <div *ngFor="let znam of listaZnamenitosti" class="col mb-5">
                 <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                    <!-- Product details-->
+                    <img class="card-img-top" src="{{znam.images}}" alt="..." />
+                    
                     <div class="card-body p-4">
                         <div class="text-center">
-                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{ znam.title }}</h5>
+                            Lat & Lon: {{ znam.coordination }}
+                            <div style="font-size:x-large; color:orange;">
+                                <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
+                                27 reviews
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">Pregledaj</a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div *ngFor="let i of [1,2,3,4,5,6,7,8]" class="col mb-5">
+                <div class="card h-100">
+                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                    
+                    <div class="card-body p-4">
+                        <div class="text-center">
                             <h5 class="fw-bolder">Fancy Product</h5>
-                            <!-- Product price-->
                             Lat & Lon: 43.138089,20.516570
                             <div style="font-size:x-large; color:orange;">
                                 <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
@@ -40,12 +57,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Product actions-->
+                    
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                         <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">View options</a></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
         </div>
     </div>

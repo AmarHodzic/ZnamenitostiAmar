@@ -1,5 +1,6 @@
 package com.example.demo.znamenitost;
 
+import com.example.demo.common.models.ZnamenitostData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,19 @@ public class ZnamenitostService {
 
     public List<Znamenitost> getZnamenitosti(){
         return znamenitostRepository.findAll();
+    }
+
+//    public List<Znamenitost> getZnamenitostiByLevel(Integer level) {
+//        return znamenitostRepository.findByZnamenitostLevel(level);
+//    }
+
+    public void deleteZnamenitost(Long znamenitostId) {
+        boolean exists = znamenitostRepository.existsById(znamenitostId);
+        if(!exists) {
+            throw new IllegalStateException(
+                    "znamenitost sa id "+ znamenitostId + " ne postoji."
+            );
+        }
+        znamenitostRepository.deleteById(znamenitostId);
     }
 }

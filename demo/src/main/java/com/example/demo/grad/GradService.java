@@ -22,7 +22,7 @@ public class  GradService {
 
     public Znamenitost addZnamenitost(ZnamenitostData znamenitostData){
         Grad g = gradRepository.getById(znamenitostData.getGradId());
-        Znamenitost z = new Znamenitost(znamenitostData.getTitle(),znamenitostData.getDescription(),znamenitostData.getImages(),znamenitostData.getCoordination(),znamenitostData.getActive(),znamenitostData.getRating(),znamenitostData.getCreatedOn(),znamenitostData.getUpdatedOn());
+        Znamenitost z = new Znamenitost(znamenitostData.getTitle(),znamenitostData.getDescription(),znamenitostData.getImages(),znamenitostData.getCoordination(),znamenitostData.getActive(),znamenitostData.getRating(),znamenitostData.getLevel(),znamenitostData.getCreatedOn(),znamenitostData.getUpdatedOn());
         g.getListaZnamenitosti().add(z);
         gradRepository.save(g);
         return z;

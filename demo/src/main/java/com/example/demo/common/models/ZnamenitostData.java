@@ -9,17 +9,19 @@ public class ZnamenitostData {
     private String coordination;
     private Boolean active;
     private Integer rating;
+    private Integer level;
     private LocalDate createdOn;
     private LocalDate updatedOn;
     private Long gradId;
 
-    public ZnamenitostData(String title, String description, String images, String coordination, Boolean active, Integer rating, LocalDate createdOn, LocalDate updatedOn, Long gradId) {
+    public ZnamenitostData(String title, String description, String images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn, Long gradId) {
         this.title = title;
         this.description = description;
         this.images = images;
         this.coordination = coordination;
         this.active = active;
         this.rating = rating;
+        this.level = level;
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
         this.gradId = gradId;
@@ -71,6 +73,14 @@ public class ZnamenitostData {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public LocalDate getCreatedOn() {

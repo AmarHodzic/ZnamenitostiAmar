@@ -8,6 +8,7 @@ export interface Znamenitost{
     country: string;
     city: string;
     rating: number;
+    level: number;
     createdOn?: Date;
     updatedOn?: Date;
 }

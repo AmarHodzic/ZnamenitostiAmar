@@ -32,6 +32,7 @@ public class DrzavaConfig {
                     "43.138082,20.516577",
                     true,
                     5,
+                    1,
                     LocalDate.of(2000, Month.MAY, 5),
                     LocalDate.of(2000, Month.MAY, 5)
                     );

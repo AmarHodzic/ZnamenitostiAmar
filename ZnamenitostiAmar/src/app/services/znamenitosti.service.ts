@@ -16,6 +16,14 @@ export class ZnamenitostiService {
   }
 
   getZnamenitostiByLevel(level):Observable<any[]>{
-    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/${level}`)
+    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/level/${level}`)
+  }
+
+  getZnamenitostiByTitle(title):Observable<any[]>{
+    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/title/${title}`)
+  }
+
+  getZnamenitostiByKeyword(keyword):Observable<any[]>{
+    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/keyword/${keyword}`)
   }
 }

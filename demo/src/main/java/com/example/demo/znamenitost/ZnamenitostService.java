@@ -20,9 +20,16 @@ public class ZnamenitostService {
         return znamenitostRepository.findAll();
     }
 
-//    public List<Znamenitost> getZnamenitostiByLevel(Integer level) {
-//        return znamenitostRepository.findByZnamenitostLevel(level);
-//    }
+    public List<Znamenitost> getZnamenitostiByLevel(Integer level) {
+        return znamenitostRepository.findByLevel(level);
+    }
+
+    public List<Znamenitost> getZnamenitostiByTitle(String title) {
+        return znamenitostRepository.findByTitle(title);
+    }
+    public List<Znamenitost> findByKeyWord(String keyword){
+        return  znamenitostRepository.findByKeyword(keyword);
+    }
 
     public void deleteZnamenitost(Long znamenitostId) {
         boolean exists = znamenitostRepository.existsById(znamenitostId);

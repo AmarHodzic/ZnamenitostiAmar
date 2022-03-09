@@ -2,29 +2,30 @@
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white d-flex flex-column align-items-center">
-            <h1 class="display-4 fw-bolder">ZnamenitostiAmar</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-            <form class="d-flex mt-4">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <h1 class="display-4 fw-bolder text-small">ZnamenitostiAmar</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Pretrazi znamenitost</p>
+            <form class="d-flex mt-4 flex-column flex-sm-row">
+                <input class="form-control me-sm-2" [(ngModel)]="search" name="searchInput" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" (click)="handleSearch(search)" type="submit">Search</button>
             </form>
         </div>
     </div>
   </header>
   <!-- Section-->
   <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-4">
+    <div class="container px-4 px-lg-5 mt-2">
         <div class="btn-group mb-5" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">
+            <input type="radio" class="btn-check" (click)="handleLevel(1)" name="btnradio" id="btnradio1" autocomplete="off" checked="">
             <label class="btn btn-outline-primary" for="btnradio1">Znamenito</label>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked="">
+            <input type="radio" class="btn-check" (click)="handleLevel(2)" name="btnradio" id="btnradio2" autocomplete="off" checked="">
             <label class="btn btn-outline-primary" for="btnradio2">Veoma znamenito</label>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked="">
+            <input type="radio" class="btn-check" (click)="handleLevel(3)" name="btnradio" id="btnradio3" autocomplete="off" checked="">
             <label class="btn btn-outline-primary" for="btnradio3">Nezaobilazno</label>
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
             <div *ngFor="let znam of listaZnamenitosti" class="col mb-5">
                 <div class="card h-100">
+        
                     <img class="card-img-top" src="{{znam.images}}" alt="..." />
                     
                     <div class="card-body p-4">

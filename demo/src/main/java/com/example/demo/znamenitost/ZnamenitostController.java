@@ -52,6 +52,7 @@ public class ZnamenitostController {
         return  gradService.addZnamenitost(znamenitostData);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping(path = "{znamenitostId}")
     public void deleteZnamenitost(@PathVariable("znamenitostId") Long znamenitostId){
         znamenitostService.deleteZnamenitost(znamenitostId);

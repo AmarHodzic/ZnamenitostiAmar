@@ -11,19 +11,23 @@ export class ZnamenitostiService {
 
   constructor(private http:HttpClient) { }
 
-  getZnamenitosti():Observable<any[]>{
+  getZnamenitosti(){
     return this.http.get<Znamenitost[]>(`${config.url}/znamenitost`)
   }
 
-  getZnamenitostiByLevel(level):Observable<any[]>{
+  getZnamenitostiByLevel(level){
     return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/level/${level}`)
   }
 
-  getZnamenitostiByTitle(title):Observable<any[]>{
+  getZnamenitostiByTitle(title){
     return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/title/${title}`)
   }
 
-  getZnamenitostiByKeyword(keyword):Observable<any[]>{
+  getZnamenitostiByKeyword(keyword){
     return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/keyword/${keyword}`)
+  }
+
+  deleteZnamenitostById(id){
+    return this.http.delete<Znamenitost>(`${config.url}/znamenitost/${id}`)
   }
 }

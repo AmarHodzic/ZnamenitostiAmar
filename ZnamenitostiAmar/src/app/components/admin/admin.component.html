@@ -1,83 +1,96 @@
 <!-- Header-->
+<div class="p-3">
+    <button type="button" [ngClass]="{'btn-success' : !showAddTask, 'btn-danger': showAddTask }" (click)="onToggle()" class="btn btn-success btn-lg">{{ btnText }}</button>
+    <form *ngIf="showAddTask" class="border border-secondary p-3 mt-2 mb-4 rounded">
+        <div class="form-group">
+        <label for="exampleInputEmail1">Title</label>
+        <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="title">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+        <label for="exampleInputPassword1">Images/TODO</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="image url">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Coordination</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="coordination">
+        </div>
+        <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Active</label>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">City</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected value="1">Pazar</option>
+                <option value="2">Sarajevo</option>
+                <option value="3">Beograd</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Level</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected value="1">Znamenito</option>
+                <option value="2">Veoma znamenito</option>
+                <option value="3">Nezaobilazno</option>
+            </select>
+        </div>
+            
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white d-flex flex-column align-items-center">
-            <h1 class="display-4 fw-bolder">ZnamenitostiAmar</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-            <form class="d-flex mt-4" style="width:60%;">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <h1 class="display-4 fw-bolder text-small">ZnamenitostiAmar</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Pretrazi znamenitost</p>
+            <form class="d-flex mt-4 flex-column flex-sm-row"  style="width:60%;">
+                <input class="form-control me-sm-2" [(ngModel)]="search" name="searchInput" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" (click)="handleSearch(search)" type="submit">Search</button>
             </form>
         </div>
     </div>
   </header>
   <!-- Section-->
   <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-4">
-        <div>
-            <button type="button" [ngClass]="{'btn-success' : !showAddTask, 'btn-danger': showAddTask }" (click)="onToggle()" class="btn btn-success btn-lg">{{ btnText }}</button>
-            <form *ngIf="showAddTask" class="border border-secondary p-3 mt-2 mb-4 rounded">
-                <div class="form-group">
-                <label for="exampleInputEmail1">Title</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">Images/TODO</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Coordination</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Aktivnost</label>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Country</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">City</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                    
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-        <div class="btn-group mt-3 mb-5" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">
+    <div class="container px-4 px-lg-5 mt-2">
+        
+        <div class="btn-group mb-5" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" (click)="handleLevel(1)" name="btnradio" id="btnradio1" autocomplete="off" checked="">
             <label class="btn btn-outline-primary" for="btnradio1">Znamenito</label>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked="">
+            <input type="radio" class="btn-check" (click)="handleLevel(2)" name="btnradio" id="btnradio2" autocomplete="off" checked="">
             <label class="btn btn-outline-primary" for="btnradio2">Veoma znamenito</label>
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked="">
+            <input type="radio" class="btn-check" (click)="handleLevel(3)" name="btnradio" id="btnradio3" autocomplete="off" checked="">
             <label class="btn btn-outline-primary" for="btnradio3">Nezaobilazno</label>
         </div>
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
-            <div *ngFor="let i of [1,2,3,4,5,6,7,8]" class="col mb-5">
+            <div *ngFor="let znam of listaZnamenitosti" class="col mb-5">
                 <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                    <!-- Product details-->
+                    <button (click)="handleDelete(znam.id)" type="button" class="close" aria-label="Close">
+                        <span class="text-danger" aria-hidden="true">&times;</span>
+                    </button>
+                    <img class="card-img-top" src="{{znam.images}}" alt="..." />
+                    
                     <div class="card-body p-4">
                         <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <!-- Product price-->
-                            Lat & Lon: 43.138089,20.516570
+                            <h5 class="fw-bolder">{{ znam.title }}</h5>
+                            Lat & Lon: {{ znam.coordination }}
                             <div style="font-size:x-large; color:orange;">
                                 <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
                                 27 reviews
                             </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                <label class="form-check-label" for="flexSwitchCheckChecked">Aktivnost</label>
+                            </div>
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">View options</a></div>
+                    
+                    <div class="card-footer pb-4 pe-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">Pregledaj</a></div>
                     </div>
                 </div>
             </div>

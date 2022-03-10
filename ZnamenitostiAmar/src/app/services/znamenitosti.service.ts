@@ -30,4 +30,8 @@ export class ZnamenitostiService {
   deleteZnamenitostById(id){
     return this.http.delete<Znamenitost>(`${config.url}/znamenitost/${id}`)
   }
+
+  postZnamenitost(znamenitost?: Znamenitost){
+    return this.http.post<Znamenitost>(`${config.url}/znamenitost`,znamenitost,{headers:{"Content-Type":"application/json"}})
+  }
 }

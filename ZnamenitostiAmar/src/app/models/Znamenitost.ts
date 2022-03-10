@@ -1,14 +1,15 @@
 export interface Znamenitost{
     id?: number;
     title: string;
-    desc: string;
-    images: string[];
+    description: string;
+    images: string;
+    // images: string[];
     coordination: string;
     active: boolean;
-    country: string;
-    city: string;
-    rating: number;
+    country?: string;
+    gradId: number;
+    rating?: number;
     level: number;
-    createdOn?: Date;
-    updatedOn?: Date;
+    createdOn?: string;
+    updatedOn?: string;
 }

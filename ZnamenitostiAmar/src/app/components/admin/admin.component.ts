@@ -73,7 +73,66 @@ export class AdminComponent implements OnInit {
     this.znamenitostiService.deleteZnamenitostById(id).subscribe(data=>{
       console.log(data);
       this.ngOnInit()
+      // this.listaZnamenitosti = this.listaZnamenitosti.filter( el => el.id == id)
     })
   }
 
+  formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ 
+  title: string
+  description: string
+  images: string
+  coordination: string
+  active: boolean = true
+  rating: number = 0
+  level: number = 1
+  gradId: number = 1
+  createdOn: string
+  updatedOn: string
+
+  saveZnamenitost(){
+
+    let currentDate = new Date
+
+    this.createdOn = this.formatDate(currentDate)
+    this.updatedOn = this.formatDate(currentDate)
+
+    let znm:Znamenitost = {
+      title:this.title,
+      description:this.description,
+      images:this.images,
+      coordination:this.coordination,
+      active:this.active,
+      rating:this.rating,
+      level:this.level,
+      gradId:this.gradId,
+      createdOn:this.createdOn,
+      updatedOn:this.updatedOn
+    }
+
+    console.log(znm);
+    this.znamenitostiService.postZnamenitost(znm).subscribe(znam=>{
+      this.listaZnamenitosti = [...this.listaZnamenitosti,znam]
+      this.title="",
+      this.description="",
+      this.images="",
+      this.coordination="",
+      this.active = true
+      this.level = 1
+      this.onToggle()
+    })
+
+  }
 }

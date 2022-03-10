@@ -3,23 +3,23 @@
     <button type="button" [ngClass]="{'btn-success' : !showAddTask, 'btn-danger': showAddTask }" (click)="onToggle()" class="btn btn-success btn-lg">{{ btnText }}</button>
     <form *ngIf="showAddTask" class="border border-secondary p-3 mt-2 mb-4 rounded">
         <div class="form-group">
-        <label for="exampleInputEmail1">Title</label>
-        <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="title">
+            <label for="exampleInputEmail1">Title</label>
+            <input type="text" [(ngModel)]="title" class="form-control" id="exampleInputEmail1" name="title" placeholder="title">
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea [(ngModel)]="description" class="form-control" id="exampleFormControlTextarea1" name="description" rows="2"></textarea>
         </div>
         <div class="form-group">
-        <label for="exampleInputPassword1">Images/TODO</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="image url">
+            <label for="exampleInputPassword1">Images/TODO</label>
+            <input type="text" [(ngModel)]="images" class="form-control" id="exampleInputPassword1" name="images" placeholder="image url">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Coordination</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="coordination">
+            <input type="text" [(ngModel)]="coordination" class="form-control" id="exampleInputPassword1" name="coordination" placeholder="coordination">
         </div>
         <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <input type="checkbox" [(ngModel)]="active" class="form-check-input" id="exampleCheck1" name="active">
             <label class="form-check-label" for="exampleCheck1">Active</label>
         </div>
         <div class="form-group">
@@ -32,14 +32,14 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Level</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected value="1">Znamenito</option>
-                <option value="2">Veoma znamenito</option>
-                <option value="3">Nezaobilazno</option>
+            <select class="form-select" [(ngModel)]="level" name="level" aria-label="Default select example">
+                <option selected [value]="1">Znamenito</option>
+                <option [value]="2">Veoma znamenito</option>
+                <option [value]="3">Nezaobilazno</option>
             </select>
         </div>
             
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" (click)="saveZnamenitost()" class="btn btn-primary">Save</button>
     </form>
 </div>
 <header class="bg-dark py-5">

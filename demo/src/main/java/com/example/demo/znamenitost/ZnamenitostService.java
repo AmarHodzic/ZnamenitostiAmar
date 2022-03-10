@@ -1,10 +1,12 @@
 package com.example.demo.znamenitost;
 
-import com.example.demo.common.models.ZnamenitostData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class ZnamenitostService {
@@ -40,4 +42,15 @@ public class ZnamenitostService {
         }
         znamenitostRepository.deleteById(znamenitostId);
     }
+
+//    @Transactional
+//    public void updateZnamenitost(Long znamenitostId,String title){
+//        Znamenitost znamenitost = znamenitostRepository.findById(znamenitostId).orElseThrow(() -> new IllegalStateException(
+//                "znamenitost with id " + znamenitostId + " does not exist"
+//        ));
+//        if(title != null && title.length() > 0 && !Objects.equals(znamenitost.getTitle(), title)) {
+//            znamenitost.setTitle(title);
+//        }
+//    }
+
 }

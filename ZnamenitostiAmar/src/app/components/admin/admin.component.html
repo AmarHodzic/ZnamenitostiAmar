@@ -5,6 +5,7 @@
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
             <input type="text" [(ngModel)]="title" class="form-control" id="exampleInputEmail1" name="title" placeholder="title">
+            <p class="text-danger">{{ errorMessage.title }}</p>
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
@@ -12,7 +13,9 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Images/TODO</label>
-            <input type="text" [(ngModel)]="images" class="form-control" id="exampleInputPassword1" name="images" placeholder="image url">
+            <input type="text" [(ngModel)]="images1" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
+            <input type="text" [(ngModel)]="images2" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
+            <input type="text" [(ngModel)]="images3" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Coordination</label>
@@ -53,9 +56,9 @@
             </form>
         </div>
     </div>
-  </header>
+</header>
   <!-- Section-->
-  <section class="py-5">
+<section class="py-5">
     <div class="container px-4 px-lg-5 mt-2">
         
         <div class="btn-group mb-5" role="group" aria-label="Basic radio toggle button group">
@@ -72,7 +75,7 @@
                     <button (click)="handleDelete(znam.id)" type="button" class="close" aria-label="Close">
                         <span class="text-danger" aria-hidden="true">&times;</span>
                     </button>
-                    <img class="card-img-top" src="{{znam.images}}" alt="..." />
+                    <img style="object-fit:cover; height:350px;" class="card-img-top" src="{{znam.images[1]}}" alt="..." />
                     
                     <div class="card-body p-4">
                         <div class="text-center">
@@ -90,7 +93,7 @@
                     </div>
                     
                     <div class="card-footer pb-4 pe-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">Pregledaj</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" [routerLink]="'/znamenitosti/'+znam.id">Pregledaj</a></div>
                     </div>
                 </div>
             </div>

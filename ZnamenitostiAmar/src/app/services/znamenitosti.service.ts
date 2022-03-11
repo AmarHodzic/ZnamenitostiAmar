@@ -12,26 +12,30 @@ export class ZnamenitostiService {
   constructor(private http:HttpClient) { }
 
   getZnamenitosti(){
-    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost`)
+    return this.http.get<Znamenitost[]>(`${config.urlZnam}`)
+  }
+
+  getZnamenitost(id){
+    return this.http.get<Znamenitost>(`${config.urlZnam}/id/${id}`)
   }
 
   getZnamenitostiByLevel(level){
-    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/level/${level}`)
+    return this.http.get<Znamenitost[]>(`${config.urlZnam}/level/${level}`)
   }
 
   getZnamenitostiByTitle(title){
-    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/title/${title}`)
+    return this.http.get<Znamenitost[]>(`${config.urlZnam}/title/${title}`)
   }
 
   getZnamenitostiByKeyword(keyword){
-    return this.http.get<Znamenitost[]>(`${config.url}/znamenitost/keyword/${keyword}`)
+    return this.http.get<Znamenitost[]>(`${config.urlZnam}/keyword/${keyword}`)
   }
 
   deleteZnamenitostById(id){
-    return this.http.delete<Znamenitost>(`${config.url}/znamenitost/${id}`)
+    return this.http.delete<Znamenitost>(`${config.urlZnam}/${id}`)
   }
 
   postZnamenitost(znamenitost?: Znamenitost){
-    return this.http.post<Znamenitost>(`${config.url}/znamenitost`,znamenitost,{headers:{"Content-Type":"application/json"}})
+    return this.http.post<Znamenitost>(`${config.urlZnam}`,znamenitost,{headers:{"Content-Type":"application/json"}})
   }
 }

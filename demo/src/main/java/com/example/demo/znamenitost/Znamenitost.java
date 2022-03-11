@@ -1,10 +1,14 @@
 package com.example.demo.znamenitost;
 
+import com.example.demo.grad.Grad;
+import com.example.demo.rating.Rating;
 import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -22,7 +26,7 @@ public class Znamenitost {
     private Long id;
     private String title;
     private String description;
-    private String images;
+    private String[] images;
     private String coordination;
     private Boolean active;
     private Integer rating;
@@ -31,10 +35,15 @@ public class Znamenitost {
     private LocalDate updatedOn;
 
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_znamenitosti")
+    private List<Rating> ratings;
+
+
     public Znamenitost() {
     }
 
-    public Znamenitost(Long id, String title, String desc, String images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn) {
+    public Znamenitost(Long id, String title, String desc, String[] images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn) {
         this.id = id;
         this.title = title;
         this.description = desc;
@@ -45,9 +54,10 @@ public class Znamenitost {
         this.level = level;
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
+        this.ratings = new ArrayList<Rating>();
     }
 
-    public Znamenitost(String title, String desc, String images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn) {
+    public Znamenitost(String title, String desc, String[] images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn) {
         this.title = title;
         this.description = desc;
         this.images = images;
@@ -57,6 +67,7 @@ public class Znamenitost {
         this.level = level;
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
+        this.ratings = new ArrayList<Rating>();
     }
 
     public Long getId() {
@@ -83,11 +94,11 @@ public class Znamenitost {
         this.description = desc;
     }
 
-    public String getImages() {
+    public String[] getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(String[] images) {
         this.images = images;
     }
 
@@ -121,6 +132,22 @@ public class Znamenitost {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 
     public LocalDate getCreatedOn() {

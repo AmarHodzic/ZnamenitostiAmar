@@ -29,6 +29,11 @@ public class ZnamenitostController {
         return znamenitostService.getZnamenitosti();
     }
 
+    @GetMapping(value = "/id/{znamenitostId}")
+    public Znamenitost getZnamenitost(@PathVariable Long znamenitostId) {
+        return znamenitostService.getZnamenitost(znamenitostId);
+    }
+
     @GetMapping(value = "/level/{znamenitostLevel}")
     public List<Znamenitost> getZnamenitostiByLvel(@PathVariable("znamenitostLevel") Integer level) {
         return znamenitostService.getZnamenitostiByLevel(level);

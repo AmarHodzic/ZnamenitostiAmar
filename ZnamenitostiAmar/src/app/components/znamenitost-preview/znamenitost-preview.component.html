@@ -1,28 +1,29 @@
-<div class="card shadow border-0 col-xl-10 col-12 m-auto d-flex" style="flex-direction: row;">
-    <div class="col-6">
-        <img class="card-img-top img-fluid" [src]="startingImg" alt="..." />
+<div class="card shadow border-0 col-xl-10 col-12 m-auto d-flex flex-sm-column flex-md-row" >
+    
+    <div class="col-sm-12 col-md-6">
+        <img style="object-fit:cover; height:450px;" class="card-img-top img-fluid" [src]="startingImg" alt="..." />
     
         <a class="carousel-control-prev bg-dark" style="width: 50px;" (click)="prevImg()" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only"></span>
         </a>
-        <a class="carousel-control-next bg-dark position-absolute end-50" style="width:50px;" (click)="nextImg()" role="button" data-slide="next">
+        <a class="carousel-control-next bg-dark position-absolute end-0" style="width:50px;" (click)="nextImg()" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only"></span>
         </a>
     </div>
     
-    <div class="card-body p-4" style="align-self: center;">
+    <div *ngIf="test" class="card-body p-4" style="align-self: center;">
         <!-- <div class="badge bg-primary bg-gradient rounded-pill mb-2">Best</div> -->
-        <a class="text-decoration-none link-dark"><h5 class="card-title mb-3">NAZIV ZNAMENITOSTI</h5></a>
-        <p class="card-text mb-2">NEKI TEKST ZA OPIS</p>
-        <p class="card-text mb-0">Lat & Lon: 43.138089,20.516570</p>
+        <a name="title" class="text-decoration-none link-dark"><h5 class="card-title mb-3">{{ currentZnam.title }}</h5></a>
+        <p class="card-text mb-2">{{ currentZnam.description }}</p>
+        <p class="card-text mb-0">Lat & Lon: {{ currentZnam.coordination }}</p>
+        <p class="card-text mb-0">Grad: {{ currentZnam.gradId }}</p>
         <div style="font-size:x-large; color:orange;">
             <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
             <p>27 reviews</p>
         </div>
     </div>
-    <!-- <div class="card-footer p-4 pt-0 bg-transparent border-top-0">        
-    </div> -->
+    
 </div>
 

@@ -22,6 +22,14 @@ public class ZnamenitostService {
         return znamenitostRepository.findAll();
     }
 
+    public Znamenitost getZnamenitost(Long id) {
+        Znamenitost znam = getZnamenitosti().stream()
+                .filter(t -> id.equals(t.getId()))
+                .findFirst()
+                .orElse(null);
+        return znam;
+    }
+
     public List<Znamenitost> getZnamenitostiByLevel(Integer level) {
         return znamenitostRepository.findByLevel(level);
     }

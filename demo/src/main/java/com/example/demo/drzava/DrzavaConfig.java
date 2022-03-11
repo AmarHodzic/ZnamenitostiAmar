@@ -28,7 +28,7 @@ public class DrzavaConfig {
             Znamenitost sinanBeg = new Znamenitost(
                     "SinanBeg",
                     "nekiOpis",
-                    "https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg",
+                    new String[]{"https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg","https://upload.wikimedia.org/wikipedia/commons/c/c8/Badshahi_Mosque_front_picture.jpg","https://zamzam.com/blog/wp-content/uploads/2021/08/shutterstock_1745937893.jpg"},
                     "43.138082,20.516577",
                     true,
                     5,
@@ -40,7 +40,7 @@ public class DrzavaConfig {
             Znamenitost sinanBeg1 = new Znamenitost(
                     "SinanBeg1",
                     "nekiOpis",
-                    "https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg",
+                    new String[]{"https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg","https://upload.wikimedia.org/wikipedia/commons/c/c8/Badshahi_Mosque_front_picture.jpg","https://zamzam.com/blog/wp-content/uploads/2021/08/shutterstock_1745937893.jpg"},
                     "43.138082,20.516577",
                     true,
                     5,
@@ -52,7 +52,7 @@ public class DrzavaConfig {
             Znamenitost sinanBeg2 = new Znamenitost(
                     "SinanBeg2",
                     "nekiOpis",
-                    "https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg",
+                    new String[]{"https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg","https://upload.wikimedia.org/wikipedia/commons/c/c8/Badshahi_Mosque_front_picture.jpg","https://zamzam.com/blog/wp-content/uploads/2021/08/shutterstock_1745937893.jpg"},
                     "43.138082,20.516577",
                     true,
                     5,
@@ -64,7 +64,7 @@ public class DrzavaConfig {
             Znamenitost sinanBeg3 = new Znamenitost(
                     "SinanBeg3",
                     "nekiOpis",
-                    "https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg",
+                    new String[]{"https://cdn.britannica.com/91/65191-050-0EDFC82C/Prophets-Mosque-tomb-Medina-Saudi-Arabia-Muhammad.jpg","https://upload.wikimedia.org/wikipedia/commons/c/c8/Badshahi_Mosque_front_picture.jpg","https://zamzam.com/blog/wp-content/uploads/2021/08/shutterstock_1745937893.jpg"},
                     "43.138082,20.516577",
                     true,
                     5,

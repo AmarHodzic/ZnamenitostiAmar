@@ -26,7 +26,7 @@
             <div *ngFor="let znam of listaZnamenitosti" class="col mb-5">
                 <div class="card h-100">
         
-                    <img class="card-img-top" src="{{znam.images}}" alt="..." />
+                    <img style="object-fit:cover; height:350px;" class="card-img-top" src="{{znam.images[1]}}" alt="..." />
                     
                     <div class="card-body p-4">
                         <div class="text-center">
@@ -40,30 +40,10 @@
                     </div>
                     
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">Pregledaj</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" [routerLink]="'/znamenitosti/'+znam.id">Pregledaj</a></div>
                     </div>
                 </div>
             </div>
-            <!-- <div *ngFor="let i of [1,2,3,4,5,6,7,8]" class="col mb-5">
-                <div class="card h-100">
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                    
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            Lat & Lon: 43.138089,20.516570
-                            <div style="font-size:x-large; color:orange;">
-                                <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
-                                27 reviews
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" routerLink="/znamenitosti">View options</a></div>
-                    </div>
-                </div>
-            </div> -->
             
         </div>
     </div>

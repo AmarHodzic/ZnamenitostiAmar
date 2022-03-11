@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class ZnamenitostData {
     private String title;
     private String description;
-    private String images;
+    private String[] images;
     private String coordination;
     private Boolean active;
     private Integer rating;
@@ -14,7 +14,7 @@ public class ZnamenitostData {
     private LocalDate updatedOn;
     private Long gradId;
 
-    public ZnamenitostData(String title, String description, String images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn, Long gradId) {
+    public ZnamenitostData(String title, String description, String[] images, String coordination, Boolean active, Integer rating, Integer level, LocalDate createdOn, LocalDate updatedOn, Long gradId) {
         this.title = title;
         this.description = description;
         this.images = images;
@@ -43,11 +43,11 @@ public class ZnamenitostData {
         this.description = description;
     }
 
-    public String getImages() {
+    public String[] getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(String[] images) {
         this.images = images;
     }
 

@@ -7,9 +7,10 @@
   
       <!-- Login Form -->
       <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-        <input type="submit" routerLink="/adminPage" class="fadeIn fourth" value="Log In">
+        <input type="text" id="login" class="fadeIn second" [(ngModel)]="username" name="login" placeholder="username">
+        <input type="password" id="password" class="fadeIn third" [(ngModel)]="password" name="login" placeholder="password">
+        <p class="text-danger">{{ validationMessage }}</p>
+        <input type="submit" (click)="login()" class="fadeIn fourth" value="Log In">
       </form>
   
       <!-- Remind Passowrd -->

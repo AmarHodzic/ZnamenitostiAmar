@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
 import { ZnamenitostiService } from 'src/app/services/znamenitosti.service';
 import { Znamenitost } from 'src/app/models/Znamenitost';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,7 @@ import { Znamenitost } from 'src/app/models/Znamenitost';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  
+
   search: string;
   listaZnamenitosti: Znamenitost[];
   searchLista: Znamenitost[];
@@ -28,11 +29,12 @@ export class AdminComponent implements OnInit {
     coordination: "Molimo Vas unesite koordinate."
   }
 
-  constructor(private uiService:UiService, private znamenitostiService: ZnamenitostiService) {
+  constructor(private uiService:UiService, private znamenitostiService: ZnamenitostiService, private router: Router) {
     this.subscription = this.uiService.onToggle().subscribe((value) => (this.showAddTask = value))
   }
 
   ngOnInit(): void {
+    console.log(this.router.url);
     this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
       this.listaZnamenitosti = listaZnamenitosti
     })

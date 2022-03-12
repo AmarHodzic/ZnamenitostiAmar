@@ -12,6 +12,7 @@ import { ZnamenitostPreviewComponent } from './components/znamenitost-preview/zn
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ZnamenitostPreviewAdminComponent } from './components/znamenitost-preview-admin/znamenitost-preview-admin.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     LoginComponent,
     AdminComponent,
-    ZnamenitostPreviewComponent
+    ZnamenitostPreviewComponent,
+    ZnamenitostPreviewAdminComponent
   ],
   imports: [
     BrowserModule,

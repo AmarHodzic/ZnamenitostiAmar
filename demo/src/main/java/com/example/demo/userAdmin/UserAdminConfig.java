@@ -9,14 +9,14 @@ import java.util.List;
 @Configuration
 public class UserAdminConfig {
 
-    @Bean
-    CommandLineRunner commandLineRunnerUserAdmin(UserAdminRepository repository) {
-        return args -> {
-            UserAdmin admin = new UserAdmin("admin","admin");
-
-            repository.saveAll(
-                    List.of(admin)
-            );
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunnerUserAdmin(UserAdminRepository repository) {
+//        return args -> {
+//            UserAdmin admin = new UserAdmin("admin","admin");
+//
+//            repository.saveAll(
+//                    List.of(admin)
+//            );
+//        };
+//    }
 }

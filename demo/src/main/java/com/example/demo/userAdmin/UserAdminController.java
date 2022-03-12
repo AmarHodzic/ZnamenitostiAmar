@@ -1,11 +1,9 @@
 package com.example.demo.userAdmin;
 
 import com.example.demo.drzava.Drzava;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +21,10 @@ public class UserAdminController {
     @GetMapping
     public List<UserAdmin> getUsers(){
         return userAdminService.getUsers();
+    }
+
+    @PostMapping
+    public void addUser(@RequestBody UserAdmin userAdmin) {
+        userAdminService.save(userAdmin);
     }
 }

@@ -2,6 +2,9 @@ package com.example.demo.znamenitost;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -51,14 +54,36 @@ public class ZnamenitostService {
         znamenitostRepository.deleteById(znamenitostId);
     }
 
-//    @Transactional
-//    public void updateZnamenitost(Long znamenitostId,String title){
-//        Znamenitost znamenitost = znamenitostRepository.findById(znamenitostId).orElseThrow(() -> new IllegalStateException(
-//                "znamenitost with id " + znamenitostId + " does not exist"
-//        ));
-//        if(title != null && title.length() > 0 && !Objects.equals(znamenitost.getTitle(), title)) {
-//            znamenitost.setTitle(title);
-//        }
-//    }
+//     && active.length() > 0
+
+    @Transactional
+    public Znamenitost updateZnamenitost(Long znamenitostId, Boolean active){
+        Znamenitost znamenitost = znamenitostRepository.findById(znamenitostId).orElseThrow(() -> new IllegalStateException(
+                "znamenitost with id " + znamenitostId + " does not exist"
+        ));
+        if(active != null && !Objects.equals(znamenitost.getActive(), active)) {
+            znamenitost.setActive(active);
+        }
+        return znamenitostRepository.save(znamenitost);
+    }
+
+    @Transactional
+    public Znamenitost updateZnam(Long znamenitostId, String title, String description, String coordination){
+        Znamenitost znamenitost = znamenitostRepository.findById(znamenitostId).orElseThrow(() -> new IllegalStateException(
+                "znamenitost with id " + znamenitostId + " does not exist"
+        ));
+        if(title != null && title.length() > 0 && !Objects.equals(znamenitost.getTitle(), title)) {
+            znamenitost.setTitle(title);
+        }
+
+        if(description != null && description.length() > 0 && !Objects.equals(znamenitost.getDescription(), description)) {
+            znamenitost.setDescription(description);
+        }
+
+        if(coordination != null && coordination.length() > 0 && !Objects.equals(znamenitost.getCoordination(), coordination)) {
+            znamenitost.setCoordination(coordination);
+        }
+        return znamenitostRepository.save(znamenitost);
+    }
 
 }

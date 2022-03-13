@@ -65,4 +65,16 @@ export class ZnamenitostPreviewAdminComponent implements OnInit {
     console.log(this.x);
     this.startingImg = this.observedImages[this.x]    
   }
+
+  editZnam(){
+
+  }
+
+  activeChange:boolean
+
+  saveEdit(){
+    console.log(this.currentZnam.title,this.currentZnam.description,this.currentZnam.coordination);
+    this.edit = false
+    this.znamenitostiService.updateZnamenitostTitle(this.currentZnam.id,this.currentZnam.title).subscribe()
+  }
 }

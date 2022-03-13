@@ -38,4 +38,20 @@ export class ZnamenitostiService {
   postZnamenitost(znamenitost?: Znamenitost){
     return this.http.post<Znamenitost>(`${config.urlZnam}`,znamenitost,{headers:{"Content-Type":"application/json"}})
   }
+
+  updateZnamenitostActive(id, active){
+    return this.http.put<Znamenitost>(`${config.urlZnam}/update`,id,active)
+  }
+
+  updateZnamenitostTitle(id, title){
+    return this.http.put<Znamenitost>(`${config.urlZnam}/updateZnam`,id,title)
+  }
+
+  updateZnamenitostDescription(id, description){
+    return this.http.put<Znamenitost>(`${config.urlZnam}`,id,description)
+  }
+
+  updateZnamenitostCoordination(id, coordination){
+    return this.http.put<Znamenitost>(`${config.urlZnam}`,id,coordination)
+  }
 }

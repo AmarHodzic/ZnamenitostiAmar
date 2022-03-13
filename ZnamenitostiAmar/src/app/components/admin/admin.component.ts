@@ -174,7 +174,8 @@ export class AdminComponent implements OnInit {
           this.coordination="",
           this.active = true
           this.level = 1
-          this.onToggle()
+          this.onToggle() 
+          this.ngOnInit()
         })
       
       this.errorMessage.title = ""
@@ -183,4 +184,5 @@ export class AdminComponent implements OnInit {
     }
 
   }
+
 }

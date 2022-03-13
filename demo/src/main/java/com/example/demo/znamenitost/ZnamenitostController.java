@@ -59,16 +59,22 @@ public class ZnamenitostController {
         znamenitostService.deleteZnamenitost(znamenitostId);
     }
 
-//    @PutMapping(path = "/update/{znamenitostId}")
-//    public void updateActive(
-//            @PathVariable("znamenitostId") Long znamenitostId,
-//            @RequestParam(required = false) String title){
-//        znamenitostService.updateZnamenitost(znamenitostId, title);
-//    }
-//    @PutMapping(path = "/update/{znamenitostId}")
-//    public Znamenitost updateZnamenitost(@RequestBody Znamenitost znamenitost, @PathVariable("znamenitostId") Long znamenitostId){
-//        znamenitostService.updateZnamenitost(znamenitost, znamenitostId);
-//        return znamenitost;
-//    }
+    @PutMapping(path = "/update/{znamenitostId}")
+    public void updateActive(
+            @PathVariable("znamenitostId") Long znamenitostId,
+            @RequestParam(required = false) Boolean active){
+        znamenitostService.updateZnamenitost(znamenitostId, active);
+    }
+
+
+    @PutMapping(path = "/updateZnam/{znamenitostId}")
+    public void updateZnam(
+            @PathVariable("znamenitostId") Long znamenitostId,
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String description,
+            @RequestParam(required = false) String coordination){
+        znamenitostService.updateZnam(znamenitostId, title,description,coordination);
+    }
+
 
 }

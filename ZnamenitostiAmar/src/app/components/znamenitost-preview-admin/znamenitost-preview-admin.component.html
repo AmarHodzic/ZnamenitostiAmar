@@ -20,13 +20,17 @@
         <p class="card-text mb-2">{{ currentZnam.description }}</p>
         <p class="card-text mb-0">Lat & Lon: {{ currentZnam.coordination }}</p>
         <p class="card-text mb-0">Grad: {{ currentZnam.gradId }}</p>
+        <div class="card-text ml-5form-check form-switch">
+            <input class="form-check-input" [(ngModel)]="activeChange" type="checkbox" id="flexSwitchCheckChecked" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Aktivnost</label>
+        </div>
     </div>
 
     <div *ngIf="test&&edit" class="card-body p-4 d-flex flex-column" style="align-self: center;">
         <input type="text" [(ngModel)]="currentZnam.title">
         <input type="text" [(ngModel)]="currentZnam.description">
         <input type="text" [(ngModel)]="currentZnam.coordination">
-        <button>Edit</button>
+        <button (click)="saveEdit()">Edit</button>
     </div>
 
     <button *ngIf="!edit" (click)="editZnm()" class="btn btn-secondary d-flex align-self-start p-2 m-2">

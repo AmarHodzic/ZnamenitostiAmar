@@ -16,14 +16,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if(this.router.)
-    console.log(this.router.url);
   }
   
   handleRouteChange = () => {
     if(this.router.url.includes('/adminPage')){
       this.username = "admin"
-      console.log(`Promenjena je ruta, sad je:${this.router.url}`);
     }
     else{
       this.username = ""

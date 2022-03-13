@@ -37,6 +37,18 @@ public class DrzavaConfig {
                     LocalDate.of(2000, Month.MAY, 5)
                     );
 
+            Znamenitost alAqsa = new Znamenitost(
+                    "AlAqsa",
+                    "nekiopis12345",
+                    new String[]{"https://lines-hub.com/wp-content/uploads/2020/07/Ismlaic-Architecture12.jpg","",""},
+                    "31.776577,35.234535",
+                    true,
+                    5,
+                    1,
+                    LocalDate.of(2000, Month.MAY, 5),
+                    LocalDate.of(2000, Month.MAY, 5)
+            );
+
             Znamenitost sinanBeg1 = new Znamenitost(
                     "SinanBeg1",
                     "nekiOpis",
@@ -77,6 +89,7 @@ public class DrzavaConfig {
             pazar.getListaZnamenitosti().add(sinanBeg1);
             pazar.getListaZnamenitosti().add(sinanBeg2);
             pazar.getListaZnamenitosti().add(sinanBeg3);
+            pazar.getListaZnamenitosti().add(alAqsa);
             srbija.getGradovi().add(pazar);
             bosna.getGradovi().add(sarajevo);
 

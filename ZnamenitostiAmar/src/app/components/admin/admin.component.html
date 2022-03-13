@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
             <input type="text" [(ngModel)]="title" class="form-control" id="exampleInputEmail1" name="title" placeholder="title">
-            <p class="text-danger">{{ errorMessage.title }}</p>
+            <p *ngIf="title==''||title==undefined" class="text-danger">{{ errorMessage.title }}</p>
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
@@ -16,10 +16,12 @@
             <input type="text" [(ngModel)]="images1" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
             <input type="text" [(ngModel)]="images2" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
             <input type="text" [(ngModel)]="images3" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
+            <p class="text-danger">{{errorMessage.images}}</p>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Coordination</label>
             <input type="text" [(ngModel)]="coordination" class="form-control" id="exampleInputPassword1" name="coordination" placeholder="coordination">
+            <p *ngIf="coordination==''||coordination==undefined" class="text-danger">{{ errorMessage.coordination }}</p>
         </div>
         <div class="form-check">
             <input type="checkbox" [(ngModel)]="active" class="form-check-input" id="exampleCheck1" name="active">
@@ -81,10 +83,6 @@
                         <div class="text-center">
                             <h5 class="fw-bolder">{{ znam.title }}</h5>
                             Lat & Lon: {{ znam.coordination }}
-                            <div style="font-size:x-large; color:orange;">
-                                <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false"></ngb-rating>
-                                27 reviews
-                            </div>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
                                 <label class="form-check-label" for="flexSwitchCheckChecked">Aktivnost</label>

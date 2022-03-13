@@ -15,5 +15,8 @@ public interface ZnamenitostRepository extends JpaRepository<Znamenitost, Long> 
     @Query(value = "select * from znamenitost e where e.title ilike %:keyword%", nativeQuery = true)
     List<Znamenitost> findByKeyword(@Param("keyword") String keyword);
 
+//    @Query(value = "select active,level from table znamenitost where active=true and level=1 || level=2 || level=3", nativeQuery = true)
+//    List<Znamenitost> findByLevelAndActive(@Param("level") Integer level,@Param("active")Boolean active);
+
     List<Znamenitost> findByTitle(String title);
 }

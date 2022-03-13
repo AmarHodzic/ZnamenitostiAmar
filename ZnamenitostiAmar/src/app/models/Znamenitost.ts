@@ -8,7 +8,7 @@ export interface Znamenitost{
     active: boolean;
     country?: string;
     gradId: number;
-    rating?: number;
+    ratings?: number;
     level: number;
     createdOn?: string;
     updatedOn?: string;

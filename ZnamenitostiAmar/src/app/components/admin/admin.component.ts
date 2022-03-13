@@ -25,8 +25,8 @@ export class AdminComponent implements OnInit {
   errorMessage = {
     title: "",
     description: "Molimo Vas unesite opis znamenitosti.",
-    images: "Molimo Vas unesite url slika.",
-    coordination: "Molimo Vas unesite koordinate."
+    images: "",
+    coordination: ""
   }
 
   constructor(private uiService:UiService, private znamenitostiService: ZnamenitostiService, private router: Router) {
@@ -38,6 +38,27 @@ export class AdminComponent implements OnInit {
     this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
       this.listaZnamenitosti = listaZnamenitosti
     })
+  }
+
+  validation(){
+    let filled: boolean
+    console.log(this.title);
+    if(this.title == "" || this.title == undefined){
+      this.errorMessage.title = "Please enter title."
+      filled = false
+    }
+    else if((this.images1 == "" || this.images1 == undefined) && (this.images2 == "" || this.images2 == undefined) && (this.images3 == "" || this.images3 == undefined)){
+      this.errorMessage.images = "Please place atleast one image url."
+      filled = false
+    }
+    else if(this.coordination == "" || this.coordination == undefined){
+      this.errorMessage.coordination = "Please enter coordinations."
+      filled = false
+    }
+    else{
+      filled = true
+    }
+    return filled
   }
 
   onToggle(){
@@ -110,7 +131,7 @@ export class AdminComponent implements OnInit {
   images: string[]
   coordination: string
   active: boolean = true
-  rating: number = 0
+  ratings: number = 0
   level: number = 1
   gradId: number = 1
   createdOn: string
@@ -122,9 +143,9 @@ export class AdminComponent implements OnInit {
 
     this.createdOn = this.formatDate(currentDate)
     this.updatedOn = this.formatDate(currentDate)
-    this.images[0] = this.images1
-    this.images[1] = this.images2
-    this.images[2] = this.images3
+
+    this.images=[this.images1,this.images2,this.images3]
+    // this.ratings = [1,2,4,1,5]
     
     let znm:Znamenitost = {
       title:this.title,
@@ -132,27 +153,33 @@ export class AdminComponent implements OnInit {
       images:this.images,
       coordination:this.coordination,
       active:this.active,
-      rating:this.rating,
+      ratings:this.ratings,
       level:this.level,
       gradId:this.gradId,
       createdOn:this.createdOn,
       updatedOn:this.updatedOn
     }
 
+    this.validation()
     console.log(znm);
-    if(znm.title == undefined || znm.title == "")
-      this.errorMessage.title = "Molimo Vas unesite naziv znamenitosti."
-    else{
-      this.znamenitostiService.postZnamenitost(znm).subscribe(znam=>{
-        this.listaZnamenitosti = [...this.listaZnamenitosti,znam]
-        this.title="",
-        this.description="",
-        this.images=["","",""],
-        this.coordination="",
-        this.active = true
-        this.level = 1
-        this.onToggle()
-      })
+    let val:boolean
+    val = this.validation()
+
+    if(val){
+        this.znamenitostiService.postZnamenitost(znm).subscribe(znam=>{
+          this.listaZnamenitosti = [...this.listaZnamenitosti,znam]
+          this.title="",
+          this.description="",
+          this.images=["","",""],
+          this.coordination="",
+          this.active = true
+          this.level = 1
+          this.onToggle()
+        })
+      
+      this.errorMessage.title = ""
+      this.errorMessage.images = ""
+      this.errorMessage.coordination = ""
     }
 
   }

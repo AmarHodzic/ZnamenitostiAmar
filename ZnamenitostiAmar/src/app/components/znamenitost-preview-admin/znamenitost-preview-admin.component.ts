@@ -17,6 +17,7 @@ export class ZnamenitostPreviewAdminComponent implements OnInit {
   x:number = 0
   observedImages:any[] =[]
   startingImg: string;
+  edit: boolean=false;
   
 
   constructor(private route:ActivatedRoute,private znamenitostiService: ZnamenitostiService) { }
@@ -36,6 +37,14 @@ export class ZnamenitostPreviewAdminComponent implements OnInit {
         },1000)
       })
     })
+  }
+
+  editZnm(){
+    this.edit = true
+  }
+
+  cancelEdit(){
+    this.edit = false
   }
 
   nextImg(){

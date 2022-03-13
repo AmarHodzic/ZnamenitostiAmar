@@ -28,7 +28,7 @@ export class AuthService {
   
     this.http.get<User[]>(`${config.url}/user`).subscribe(users=>{
       for(let userFromDB of users){
-              
+        
         if(userFromDB.username==user.username && this.compareHash(this.myPw,userFromDB.password)){
           
           // this.setAuthToken('ulogovan')

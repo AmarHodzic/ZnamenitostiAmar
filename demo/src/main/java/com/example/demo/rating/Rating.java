@@ -19,17 +19,17 @@ public class Rating {
             generator = "grad_sequence"
     )
     private Long id;
-    private String rate;
+    private Integer rate;
 
     public Rating() {
     }
 
-    public Rating(Long id, String rate) {
+    public Rating(Long id, Integer rate) {
         this.id = id;
         this.rate = rate;
     }
 
-    public Rating(String rate) {
+    public Rating(Integer rate) {
         this.rate = rate;
     }
 
@@ -41,11 +41,11 @@ public class Rating {
         this.id = id;
     }
 
-    public String getRate() {
+    public Integer getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(Integer rate) {
         this.rate = rate;
     }
 

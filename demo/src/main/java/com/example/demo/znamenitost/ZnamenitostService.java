@@ -68,7 +68,7 @@ public class ZnamenitostService {
     }
 
     @Transactional
-    public Znamenitost updateZnam(Long znamenitostId, String title, String description, String coordination){
+    public Znamenitost updateZnam(Long znamenitostId, String title, String description, String coordination, Boolean active){
         Znamenitost znamenitost = znamenitostRepository.findById(znamenitostId).orElseThrow(() -> new IllegalStateException(
                 "znamenitost with id " + znamenitostId + " does not exist"
         ));
@@ -82,6 +82,10 @@ public class ZnamenitostService {
 
         if(coordination != null && coordination.length() > 0 && !Objects.equals(znamenitost.getCoordination(), coordination)) {
             znamenitost.setCoordination(coordination);
+        }
+
+        if(active != null && !Objects.equals(znamenitost.getActive(), active)) {
+            znamenitost.setActive(active);
         }
         return znamenitostRepository.save(znamenitost);
     }

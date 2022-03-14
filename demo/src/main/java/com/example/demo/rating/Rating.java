@@ -20,17 +20,20 @@ public class Rating {
     )
     private Long id;
     private Integer rate;
+    private Long userId;
 
     public Rating() {
     }
 
-    public Rating(Long id, Integer rate) {
+    public Rating(Long id, Integer rate, Long userId) {
         this.id = id;
         this.rate = rate;
+        this.userId = userId;
     }
 
-    public Rating(Integer rate) {
+    public Rating(Integer rate, Long userId) {
         this.rate = rate;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -47,6 +50,14 @@ public class Rating {
 
     public void setRate(Integer rate) {
         this.rate = rate;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     @Override

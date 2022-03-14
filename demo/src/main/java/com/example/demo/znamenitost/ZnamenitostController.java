@@ -72,8 +72,9 @@ public class ZnamenitostController {
             @PathVariable("znamenitostId") Long znamenitostId,
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String description,
-            @RequestParam(required = false) String coordination){
-        znamenitostService.updateZnam(znamenitostId, title,description,coordination);
+            @RequestParam(required = false) String coordination,
+            @RequestParam(required = false) Boolean active){
+        znamenitostService.updateZnam(znamenitostId, title,description,coordination,active);
     }
 
 

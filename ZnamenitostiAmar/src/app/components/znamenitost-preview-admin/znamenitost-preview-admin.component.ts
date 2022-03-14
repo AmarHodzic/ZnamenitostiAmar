@@ -29,7 +29,7 @@ export class ZnamenitostPreviewAdminComponent implements OnInit {
     
       this.znamenitostiService.getZnamenitost(this.id).subscribe(znm=>{
         this.currentZnam = znm
-        this.startingImg = this.currentZnam[0]
+        this.startingImg = this.currentZnam.images[0]
         this.observedImages = this.currentZnam.images
         console.log(this.currentZnam);
         setTimeout(()=>{
@@ -58,6 +58,7 @@ export class ZnamenitostPreviewAdminComponent implements OnInit {
   }
 
   prevImg(){
+    
     if(this.x <= 0){
       this.x = this.observedImages.length;
     }
@@ -70,11 +71,9 @@ export class ZnamenitostPreviewAdminComponent implements OnInit {
 
   }
 
-  activeChange:boolean
-
   saveEdit(){
     console.log(this.currentZnam.title,this.currentZnam.description,this.currentZnam.coordination);
     this.edit = false
-    this.znamenitostiService.updateZnamenitostTitle(this.currentZnam.id,this.currentZnam.title).subscribe()
+    this.znamenitostiService.updateZnamenitostTitle(this.currentZnam.id,this.currentZnam.title,this.currentZnam.description,this.currentZnam.coordination,this.currentZnam.active).subscribe()
   }
 }

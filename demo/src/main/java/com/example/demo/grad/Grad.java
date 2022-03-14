@@ -70,6 +70,7 @@ public class Grad {
         return "Grad{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", listaZnamenitosti=" + listaZnamenitosti +
                 '}';
     }
 }

@@ -7,8 +7,11 @@ export interface Znamenitost{
     coordination: string;
     active: boolean;
     country?: string;
+    gradName?: string;
     gradId: number;
-    ratings?: number;
+    ratings?: any[]
+    rating?: number;
+    rateBar?: number;
     level: number;
     createdOn?: string;
     updatedOn?: string;

@@ -131,7 +131,7 @@ export class AdminComponent implements OnInit {
   images: string[]
   coordination: string
   active: boolean = true
-  ratings: number = 0
+  rating: number = 0
   level: number = 1
   gradId: number = 1
   createdOn: string
@@ -153,7 +153,7 @@ export class AdminComponent implements OnInit {
       images:this.images,
       coordination:this.coordination,
       active:this.active,
-      ratings:this.ratings,
+      rating:this.rating,
       level:this.level,
       gradId:this.gradId,
       createdOn:this.createdOn,

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Znamenitost } from 'src/app/models/Znamenitost';
 import { ZnamenitostiService } from 'src/app/services/znamenitosti.service';
 import { FormsModule } from '@angular/forms';
+import { Rating } from 'src/app/models/Rating';
+import { RatingService } from 'src/app/services/rating.service';
+import { Grad } from 'src/app/models/Grad';
+import { GradService } from 'src/app/services/grad.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -15,13 +19,22 @@ export class LandingPageComponent implements OnInit {
   listaZnamenitosti: Znamenitost[];
   searchLista: Znamenitost[];
   znamenitostLevel: number = 3;
+  gradovi: Grad[] 
+  znamenitostiGrad: Znamenitost[]
   
-
-  constructor(private znamenitostiService: ZnamenitostiService) { }
+  constructor(private gradService: GradService,private znamenitostiService: ZnamenitostiService, private ratingService: RatingService) { }
 
   ngOnInit(): void {
+
+    // this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
+    //   this.listaZnamenitosti = listaZnamenitosti
+    // })
     this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
       this.listaZnamenitosti = listaZnamenitosti
+      this.gradService.getGrad().subscribe(grad=>{
+        // this.znamenitostiGrad = 
+        // for(let i =0; i<lista)  
+      })
     })
   }
 
@@ -29,7 +42,7 @@ export class LandingPageComponent implements OnInit {
     this.znamenitostLevel = level;
     this.handleSearch(this.search)
   }
-  
+
   handleSearch(search){
 
     if(search === undefined){

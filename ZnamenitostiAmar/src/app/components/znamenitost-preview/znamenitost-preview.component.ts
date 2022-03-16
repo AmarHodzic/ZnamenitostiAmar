@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Rating } from 'src/app/models/Rating';
 import { Znamenitost } from 'src/app/models/Znamenitost';
+import { GradService } from 'src/app/services/grad.service';
 import { RatingService } from 'src/app/services/rating.service';
 import { ZnamenitostiService } from 'src/app/services/znamenitosti.service';
 
@@ -26,7 +27,7 @@ export class ZnamenitostPreviewComponent implements OnInit {
   rateBar: number;
   
 
-  constructor(private route:ActivatedRoute,private znamenitostiService: ZnamenitostiService, private ratingService:RatingService) { }
+  constructor(private gradService:GradService, private route:ActivatedRoute,private znamenitostiService: ZnamenitostiService, private ratingService:RatingService) { }
 
   ngOnInit(): void {
     this.test = false
@@ -36,7 +37,22 @@ export class ZnamenitostPreviewComponent implements OnInit {
         this.currentZnam = znm
         this.startingImg = this.currentZnam.images[0]
         this.observedImages = this.currentZnam.images
+        var j = this.observedImages.length
+        while (j--) {
+            if (this.observedImages[j] == null || this.observedImages[j]=="") { 
+                this.observedImages.splice(j, 1);
+            } 
+        }
         console.log(this.currentZnam);
+        this.gradService.getGrad().subscribe(grad=>{
+          for(let i =0; i<grad.length; i++){
+            for(let j = 0; j<grad[i].listaZnamenitosti.length; j++){
+              if(grad[i].listaZnamenitosti[j].id == znm.id){
+                this.currentZnam.gradName = grad[i].name
+              }
+            }
+          }  
+        })
         setTimeout(()=>{
           this.test = true
         },1000)

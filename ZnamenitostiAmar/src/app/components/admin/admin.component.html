@@ -14,13 +14,27 @@
         <div class="form-group">
             <label for="exampleInputPassword1">Images/TODO</label>
             <input type="text" [(ngModel)]="images1" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
-            <input type="text" [(ngModel)]="images2" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
-            <input type="text" [(ngModel)]="images3" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
+            <input *ngIf="imagesAllowed2" type="text" [(ngModel)]="images2" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
+            <input *ngIf="imagesAllowed3" type="text" [(ngModel)]="images3" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
+            <input *ngIf="imagesAllowed4" type="text" [(ngModel)]="images4" class="form-control" id="exampleInputPassword1" name="images" placeholder="place image url">
+            <div class="d-flex">
+                <button *ngIf="addButton" (click)="addNewImage()" type="button" class="mr-auto btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </button>
+                <button *ngIf="removeButton" (click)="removeNewImage()" type="button" class="ml-auto btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-minus" viewBox="0 0 16 16">
+                        <path d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+                        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                    </svg>
+                </button>
+            </div>
             <p class="text-danger">{{errorMessage.images}}</p>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Coordination</label>
-            <input type="text" [(ngModel)]="coordination" class="form-control" id="exampleInputPassword1" name="coordination" placeholder="coordination">
+            <input type="text" [(ngModel)]="coordination" maxlength="23" (keypress)="OnlyNumbersAllowed($event)" class="form-control" id="exampleInputPassword1" name="coordination" placeholder="coordination">
             <p *ngIf="coordination==''||coordination==undefined" class="text-danger">{{ errorMessage.coordination }}</p>
         </div>
         <div class="form-check">
@@ -29,10 +43,10 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">City</label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected value="1">Pazar</option>
-                <option value="2">Sarajevo</option>
-                <option value="3">Beograd</option>
+            <select class="form-select" [(ngModel)]="gradId" name="gradId" aria-label="Default select example">
+                <option selected [value]="1">Pazar</option>
+                <option [value]="2">Beograd</option>
+                <option [value]="3">Sarajevo</option>
             </select>
         </div>
         <div class="form-group">
@@ -77,12 +91,13 @@
                     <button (click)="handleDelete(znam.id)" type="button" class="close" aria-label="Close">
                         <span class="text-danger" aria-hidden="true">&times;</span>
                     </button>
-                    <img style="object-fit:cover; height:350px;" class="card-img-top" src="{{znam.images[1]}}" alt="..." />
+                    <img style="object-fit:cover; height:350px;" class="card-img-top" src="{{znam.images[0]}}" alt="..." />
                     
                     <div class="card-body p-4">
                         <div class="text-center">
                             <h5 class="fw-bolder">{{ znam.title }}</h5>
-                            Lat & Lon: {{ znam.coordination }}
+                            <p>Lat & Lon: {{ znam.coordination }}</p>
+                            <p [ngClass]="{'text-danger': znam.active === false, 'text-success': znam.active === true}" class="card-text mb-2">Active: {{ znam.active }}</p>
                         </div>
                     </div>
                     

@@ -1,19 +1,19 @@
 <div class="card shadow border-0 col-xl-10 col-12 m-auto d-flex flex-sm-column flex-md-row" >
     
     <div class="col-sm-12 col-md-6">
-        <img style="object-fit:cover; height:450px;" class="card-img-top img-fluid" [src]="startingImg" alt="..." />
+        <img style="object-fit:cover; height:450px;" class="card-img-top img-fluid prevSlika" [src]="startingImg" alt="..." />
     
-        <a class="carousel-control-prev bg-dark" style="width: 50px;" (click)="prevImg()" role="button" data-slide="prev">
+        <a class="carousel-control-prev bg-dark levoSlide" style="width: 50px;" (click)="prevImg()" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only"></span>
         </a>
-        <a class="carousel-control-next bg-dark position-absolute end-0" style="width:50px;" (click)="nextImg()" role="button" data-slide="next">
+        <a class="carousel-control-next bg-dark position-absolute end-0 desnoSlide" style="width:50px;" (click)="nextImg()" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only"></span>
         </a>
     </div>
     
-    <div *ngIf="test&&!edit" class="card-body p-4 order-2" style="align-self: center;">
+    <div *ngIf="test&&!edit" class="card-body pb-4 pl-4 pr-4 order-2" style="align-self: center;">
         
         <!-- <div class="badge bg-primary bg-gradient rounded-pill mb-2">Best</div> -->
         <a name="title" class="text-decoration-none link-dark"><h5 class="card-title mb-3">{{ currentZnam.title }}</h5></a>
@@ -25,7 +25,7 @@
     <div *ngIf="test&&edit" class="card-body p-4 d-flex flex-column small-version" style="align-self: center;">
         <input type="text" class="form-control mb-2" [(ngModel)]="currentZnam.title">
         <input type="text" class="form-control mb-2" [(ngModel)]="currentZnam.description">
-        <input type="text" class="form-control mb-2" [(ngModel)]="currentZnam.coordination">
+        <input type="text" class="form-control mb-2" maxlength="23" (keypress)="OnlyNumbersAllowed($event)" [(ngModel)]="currentZnam.coordination">
         <div class="card-text ml-5form-check form-switch mb-2">
             <input class="form-check-input" [(ngModel)]="currentZnam.active" type="checkbox" id="flexSwitchCheckChecked" checked>
             <label class="form-check-label" for="flexSwitchCheckChecked">Aktivnost</label>
@@ -33,7 +33,7 @@
         <button class="btn btn-secondary" (click)="saveEdit()">Edit</button>
     </div>
 
-    <button *ngIf="!edit" (click)="editZnm()" class="btn btn-secondary d-flex align-self-start order-3 p-2 m-2">
+    <button *ngIf="!edit" (click)="editZnm()" class="btn btn-secondary d-flex align-self-start order-3 pl-2 pr-2 pt-2 mt-2 ml-2 mr-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
             <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
         </svg>

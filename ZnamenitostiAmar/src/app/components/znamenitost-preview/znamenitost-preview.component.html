@@ -19,7 +19,7 @@
         <a name="title" class="text-decoration-none link-dark"><h5 class="card-title mb-3">{{ currentZnam.title }}</h5></a>
         <p class="card-text mb-2">{{ currentZnam.description }}</p>
         <p class="card-text mb-2">Lat & Lon: {{ currentZnam.coordination }}</p>
-        <p class="card-text mb-0">Grad: {{ currentZnam.gradId }}</p>
+        <p class="card-text mb-0">Grad: {{ currentZnam.gradName }}</p>
         <div style="font-size:x-large; color:orange;">
             <ngb-rating [max]="5" [(rate)]="rateBar" (click)="rateZnam()" [readonly]="false"></ngb-rating>
             <p *ngIf="!voted" class="text-danger small mb-0">Vec ste glasali.</p>

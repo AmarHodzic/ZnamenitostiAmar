@@ -24,7 +24,6 @@ export class AdminComponent implements OnInit {
 
   errorMessage = {
     title: "",
-    description: "Molimo Vas unesite opis znamenitosti.",
     images: "",
     coordination: ""
   }
@@ -34,7 +33,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.router.url);
     this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
       this.listaZnamenitosti = listaZnamenitosti
     })
@@ -42,18 +40,37 @@ export class AdminComponent implements OnInit {
 
   validation(){
     let filled: boolean
-    console.log(this.title);
     if(this.title == "" || this.title == undefined){
       this.errorMessage.title = "Please enter title."
       filled = false
+      this.errorMessage.coordination = ''
+      this.errorMessage.images = ''
     }
-    else if((this.images1 == "" || this.images1 == undefined) && (this.images2 == "" || this.images2 == undefined) && (this.images3 == "" || this.images3 == undefined)){
-      this.errorMessage.images = "Please place atleast one image url."
-      filled = false
+    else if(this.images1 == '' || this.images1 == undefined) {
+      this.errorMessage.images = 'Please place image url.'
+      this.errorMessage.title = ''
+      this.errorMessage.coordination = ''
+    }
+    else if((this.images2 == '' || this.images2 == undefined) && this.imagesAllowed2 == true) {
+      this.errorMessage.images = 'Please place image url.'
+      this.errorMessage.title = ''
+      this.errorMessage.coordination = ''
+    }
+    else if((this.images3 == '' || this.images3 == undefined) && this.imagesAllowed3 == true) {
+      this.errorMessage.images = 'Please place image url.'
+      this.errorMessage.title = ''
+      this.errorMessage.coordination = ''
+    }
+    else if((this.images4 == '' || this.images4 == undefined) && this.imagesAllowed4 == true) {
+      this.errorMessage.images = 'Please place image url.'
+      this.errorMessage.title = ''
+      this.errorMessage.coordination = ''
     }
     else if(this.coordination == "" || this.coordination == undefined){
       this.errorMessage.coordination = "Please enter coordinations."
       filled = false
+      this.errorMessage.title = ''
+      this.errorMessage.images = ''
     }
     else{
       filled = true
@@ -77,7 +94,6 @@ export class AdminComponent implements OnInit {
   handleSearch(search){
 
     if(search === undefined){
-      console.log(search);
       this.ngOnInit()
     }
 
@@ -102,7 +118,6 @@ export class AdminComponent implements OnInit {
 
   handleDelete(id){
     this.znamenitostiService.deleteZnamenitostById(id).subscribe(data=>{
-      console.log(data);
       this.ngOnInit()
       // this.listaZnamenitosti = this.listaZnamenitosti.filter( el => el.id == id)
     })
@@ -120,11 +135,64 @@ export class AdminComponent implements OnInit {
         day = '0' + day;
 
     return [year, month, day].join('-');
-}
- 
+  }
+
+  imagesAllowed2:boolean = false
+  imagesAllowed3:boolean = false
+  imagesAllowed4:boolean = false
+  removeButton:boolean = false
+  addButton:boolean = true
+
+  addNewImage(){
+    if(this.imagesAllowed2 == false){
+      this.imagesAllowed2 = true
+      this.removeButton = true
+    }
+    else if(this.imagesAllowed3 == false){
+      this.imagesAllowed3 = true
+    }
+    else if(this.imagesAllowed4 == false) {
+      this.imagesAllowed4 = true
+      this.addButton = false
+    }
+  }
+
+  removeNewImage(){
+    if(this.imagesAllowed4 == true){
+      this.imagesAllowed4 = false
+      this.addButton = true
+    }
+    else if(this.imagesAllowed3 == true){
+      this.imagesAllowed3 = false
+    }
+    else if(this.imagesAllowed2 == true) {
+      this.imagesAllowed2 = false
+      this.removeButton = false
+    }
+  }
+
+  OnlyNumbersAllowed(event){
+    const charCode = (event.which)?event.which: event.keyCode;
+  
+    if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 44 && charCode != 45){
+      console.log('restrikcija '+charCode);
+      return false
+    }
+
+    return true
+  }
+
+  UrlExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status==200;
+  }
+
   images1: string;
   images2: string;
   images3: string;
+  images4: string;
 
   title: string
   description: string
@@ -137,15 +205,18 @@ export class AdminComponent implements OnInit {
   createdOn: string
   updatedOn: string
 
+  nestoZaTestiranje: number
+
   saveZnamenitost(){
+
+    console.log(this.nestoZaTestiranje);
 
     let currentDate = new Date
 
     this.createdOn = this.formatDate(currentDate)
     this.updatedOn = this.formatDate(currentDate)
 
-    this.images=[this.images1,this.images2,this.images3]
-    // this.ratings = [1,2,4,1,5]
+    this.images=[this.images1,this.images2,this.images3,this.images4]
     
     let znm:Znamenitost = {
       title:this.title,
@@ -160,8 +231,12 @@ export class AdminComponent implements OnInit {
       updatedOn:this.updatedOn
     }
 
+    for(let i = 0; i<znm.images.length;i++){
+      if(znm.images[i] !==undefined && this.UrlExists(znm.images[i]) == false)
+        znm.images[i] = 'https://st2.depositphotos.com/3101765/8377/v/600/depositphotos_83770810-stock-illustration-watercolor-islamic-mosque-painting.jpg'
+    }
+
     this.validation()
-    console.log(znm);
     let val:boolean
     val = this.validation()
 

@@ -24,6 +24,7 @@ public class DrzavaConfig {
 
             Grad pazar = new Grad("Pazar");
             Grad sarajevo = new Grad("Sarajevo");
+            Grad beograd = new Grad("Beograd");
 
             Znamenitost sinanBeg = new Znamenitost(
                     "SinanBeg",
@@ -87,10 +88,11 @@ public class DrzavaConfig {
 
             pazar.getListaZnamenitosti().add(sinanBeg);
             pazar.getListaZnamenitosti().add(sinanBeg1);
-            pazar.getListaZnamenitosti().add(sinanBeg2);
+            sarajevo.getListaZnamenitosti().add(sinanBeg2);
             pazar.getListaZnamenitosti().add(sinanBeg3);
             pazar.getListaZnamenitosti().add(alAqsa);
             srbija.getGradovi().add(pazar);
+            srbija.getGradovi().add(beograd);
             bosna.getGradovi().add(sarajevo);
 
             repository.saveAll(

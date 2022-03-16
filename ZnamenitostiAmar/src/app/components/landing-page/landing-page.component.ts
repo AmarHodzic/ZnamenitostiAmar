@@ -19,24 +19,40 @@ export class LandingPageComponent implements OnInit {
   listaZnamenitosti: Znamenitost[];
   searchLista: Znamenitost[];
   znamenitostLevel: number = 3;
-  gradovi: Grad[] 
-  znamenitostiGrad: Znamenitost[]
-  
+
   constructor(private gradService: GradService,private znamenitostiService: ZnamenitostiService, private ratingService: RatingService) { }
 
   ngOnInit(): void {
-
-    // this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
-    //   this.listaZnamenitosti = listaZnamenitosti
-    // })
+    
     this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
       this.listaZnamenitosti = listaZnamenitosti
+      var z = this.listaZnamenitosti.length
+      while (z--) {
+          if (this.listaZnamenitosti[z].active == false) { 
+              this.listaZnamenitosti.splice(z, 1);
+          }
+      }
+      
       this.gradService.getGrad().subscribe(grad=>{
-        // this.znamenitostiGrad = 
-        // for(let i =0; i<lista)  
+        for(let i =0; i<grad.length; i++){
+          for(let j = 0; j<grad[i].listaZnamenitosti.length; j++){
+            for(let r = 0; r<listaZnamenitosti.length; r++){
+              if(grad[i].listaZnamenitosti[j].id == listaZnamenitosti[r].id){
+                this.listaZnamenitosti[r].gradName = grad[i].name
+              }
+            }
+          }
+        }  
       })
     })
   }
+
+  // UrlExists(url) {
+  //   var http = new XMLHttpRequest();
+  //   http.open('HEAD', url, false);
+  //   http.send();
+  //   return http.status==200;
+  // }
 
   handleLevel(level){
     this.znamenitostLevel = level;
@@ -46,7 +62,6 @@ export class LandingPageComponent implements OnInit {
   handleSearch(search){
 
     if(search === undefined){
-      console.log(search);
       this.ngOnInit()
     }
 

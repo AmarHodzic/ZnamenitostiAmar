@@ -12,11 +12,13 @@ export class LoginComponent implements OnInit {
 
   username:string
   password:string
+  showFalse: boolean;
 
   message = {
     both:"Please fill username and password field.",
     usernameError:"Please enter your username.",
     passwordError:"Please enter your password.",
+    wrongUser:"There is no such user."
   }
   validationMessage: string = ""
 
@@ -38,6 +40,6 @@ export class LoginComponent implements OnInit {
       let u:User = {username:this.username,password:this.password}
       this.authService.login(u)
     }
-    // console.log(this.router.url);
+    
   }
 }

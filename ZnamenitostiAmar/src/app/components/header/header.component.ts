@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,26 +9,49 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   // auth:boolean;
-  username:string;
+
+  isAuthenticated:boolean;
+  showLogin:boolean = true;
 
   constructor(private authService:AuthService, private router: Router) {
-    router.events.subscribe( (event) => ( event instanceof NavigationEnd ) && this.handleRouteChange() )
+    // router.events.subscribe( (event) => ( event instanceof NavigationEnd ) && this.handleRouteChange() )
   }
 
   ngOnInit(): void {
+    // proveri da li sam authentifikovan.
+    this.authService.authenticatedAsObservable.subscribe(auth=>{
+      this.isAuthenticated = auth
+      this.checkLoginButton()
+    })
+    this.authService.isAuthenticated()
   }
   
-  handleRouteChange = () => {
-    if(this.router.url.includes('/adminPage')){
-      this.username = "admin"
+  checkLoginButton(){
+    if(this.router.url.includes('/adminPage'))
+      this.showLogin = false
+    else if(this.router.url == '/') {
+      this.showLogin = true
+      // window.location.reload()
     }
-    else{
-      this.username = ""
-    }
-  };
+  }
+  // handleRouteChange = () => {
+  //   if(this.router.url.includes('/adminPage')){
+  //     this.username = "admin"
+  //   }
+  //   else{
+  //     this.username = ""
+  //   }
+  // };
 
   logout(){
-    this.handleRouteChange()
-    this.router.navigate(['/']);
+    // this.checkLoginButton()
+    
+    this.showLogin = true
+    this.authService.logout();
+    this.router.navigate(['/'])
+    setTimeout(()=>{
+      window.location.reload()
+    },500)
+
   }
 }

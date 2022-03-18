@@ -1,13 +1,13 @@
 <div class="card shadow border-0 col-xl-10 col-12 m-auto d-flex flex-sm-column flex-md-row" >
     
     <div *ngIf="test" class="col-sm-12 col-md-6">
-        <img style="object-fit:cover; height:450px;" class="card-img-top img-fluid" [src]="startingImg" alt="..." />
+        <img style="object-fit:cover; height:450px;" class="card-img-top img-fluid prevSlika" [src]="startingImg" alt="..." />
     
-        <a class="carousel-control-prev bg-dark" style="width: 50px;" (click)="prevImg()" role="button" data-slide="prev">
+        <a class="carousel-control-prev bg-dark levoSlide" style="width: 50px;" (click)="prevImg()" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only"></span>
         </a>
-        <a class="carousel-control-next bg-dark position-absolute end-0" style="width:50px;" (click)="nextImg()" role="button" data-slide="next">
+        <a class="carousel-control-next bg-dark position-absolute end-0 desnoSlide" style="width:50px;" (click)="nextImg()" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only"></span>
         </a>

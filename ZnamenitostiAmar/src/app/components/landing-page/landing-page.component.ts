@@ -20,9 +20,9 @@ export class LandingPageComponent implements OnInit {
   searchLista: Znamenitost[];
   znamenitostLevel: number = 3;
 
-  constructor(private gradService: GradService,private znamenitostiService: ZnamenitostiService, private ratingService: RatingService) { }
+  constructor(private gradService: GradService,private znamenitostiService: ZnamenitostiService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     
     this.znamenitostiService.getZnamenitostiByLevel(this.znamenitostLevel).subscribe(listaZnamenitosti=>{
       this.listaZnamenitosti = listaZnamenitosti
